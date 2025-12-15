@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,7 +7,7 @@
     <title>Lyca Balita</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -14,191 +15,219 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --header-text: #001f3f;
-            --body-text: #2c5f8d;
-            --bg-color: #f5f5f0;
-            --accent: #001f3f;
-            --link-color: #1a4d7a;
-            --section-header: #1a4d7a;
-        }
+```
+    :root {
+        --header-text: #0d1117;
+        --body-text: #1f2937;
+        --bg-color: #ffffff;
+        --accent: #6366f1;
+        --link-color: #6366f1;
+        --section-header: #374151;
+        --border: #e5e7eb;
+    }
 
-        body.dark-mode {
-            --header-text: #a8c5e0;
-            --body-text: #7ba7cc;
-            --bg-color: #0a1929;
-            --accent: #a8c5e0;
-            --link-color: #7ba7cc;
-            --section-header: #7ba7cc;
-        }
+    body.dark-mode {
+        --header-text: #f9fafb;
+        --body-text: #d1d5db;
+        --bg-color: #0d1117;
+        --accent: #818cf8;
+        --link-color: #818cf8;
+        --section-header: #9ca3af;
+        --border: #1f2937;
+    }
 
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background-color: var(--bg-color);
+        color: var(--body-text);
+        line-height: 1.6;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        padding: 60px 80px 40px 80px;
+        max-width: 900px;
+        margin: 0 auto;
+        font-weight: 400;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 12px;
+        position: relative;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 600;
+        color: var(--header-text);
+        margin-bottom: 0;
+        line-height: 1;
+        letter-spacing: -0.03em;
+    }
+
+    .tagline {
+        font-size: 1rem;
+        margin-bottom: 32px;
+        max-width: 600px;
+        font-weight: 400;
+        color: var(--body-text);
+        opacity: 0.85;
+    }
+
+    .dark-mode-toggle {
+        background: none;
+        border: none;
+        width: 2.5rem;
+        height: 2.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+        border-radius: 8px;
+    }
+
+    .dark-mode-toggle:hover {
+        background-color: var(--border);
+    }
+
+    .sun-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+        fill: none;
+        stroke: var(--body-text);
+        stroke-width: 2;
+        stroke-linecap: round;
+    }
+
+    nav {
+        display: flex;
+        gap: 32px;
+        margin-bottom: 48px;
+        flex-wrap: wrap;
+    }
+
+    nav a {
+        color: var(--link-color);
+        text-decoration: none;
+        font-weight: 500;
+        font-size: 0.9375rem;
+        transition: opacity 0.2s ease;
+        position: relative;
+    }
+
+    nav a::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: var(--link-color);
+        opacity: 0.5;
+    }
+
+    nav a:hover {
+        opacity: 0.7;
+    }
+
+    section {
+        margin-bottom: 56px;
+    }
+
+    .section-title {
+        font-weight: 500;
+        text-transform: uppercase;
+        color: var(--section-header);
+        font-size: 0.75rem;
+        margin-bottom: 16px;
+        padding-bottom: 0;
+        border-bottom: none;
+        letter-spacing: 0.1em;
+    }
+
+    ul {
+        list-style: none;
+        padding-left: 0;
+    }
+
+    li {
+        margin-bottom: 12px;
+        position: relative;
+        padding-left: 0;
+        font-size: 0.9375rem;
+    }
+
+    li:before {
+        content: none;
+    }
+
+    li ul {
+        margin-top: 8px;
+        margin-left: 20px;
+    }
+
+    li ul li {
+        margin-bottom: 8px;
+        opacity: 0.9;
+    }
+
+    a {
+        color: var(--link-color);
+        text-decoration: none;
+        transition: opacity 0.2s ease;
+        border-bottom: 1px solid var(--link-color);
+        border-bottom-color: var(--link-color);
+        opacity: 0.9;
+    }
+
+    a:hover {
+        opacity: 0.7;
+    }
+
+    em {
+        font-style: normal;
+        color: var(--body-text);
+        opacity: 0.7;
+        font-size: 0.875rem;
+    }
+
+    @media (max-width: 768px) {
         body {
-            font-family: 'Merriweather', Georgia, serif;
-            background-color: var(--bg-color);
-            color: var(--body-text);
-            line-height: 1.8;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            padding: 40px 60px 20px 60px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            position: relative;
+            padding: 40px 24px 24px 24px;
         }
 
         h1 {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--header-text);
-            margin-bottom: 8px;
-            line-height: 40px;
+            font-size: 2rem;
         }
 
         .tagline {
-            font-style: italic;
-            font-size: 1rem;
-            margin-bottom: 25px;
-            max-width: 600px;
-        }
-
-        .dark-mode-toggle {
-            background: none;
-            border: 2px solid var(--accent);
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            flex-shrink: 0;
-        }
-
-        .dark-mode-toggle:hover {
-            transform: scale(1.1);
-        }
-
-        .sun-icon {
-            width: 20px;
-            height: 20px;
-            fill: none;
-            stroke: var(--accent);
-            stroke-width: 2;
+            font-size: 0.9375rem;
         }
 
         nav {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
+            gap: 24px;
         }
 
         nav a {
-            color: var(--link-color);
-            text-decoration: underline;
-            font-weight: 500;
-            transition: opacity 0.2s ease;
-        }
-
-        nav a:hover {
-            opacity: 0.7;
-        }
-
-        section {
-            margin-bottom: 50px;
-        }
-
-        .section-title {
-            font-weight: bold;
-            text-transform: uppercase;
-            color: var(--section-header);
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--body-text);
-        }
-
-        ul {
-            list-style: none;
-            padding-left: 0;
+            font-size: 0.875rem;
         }
 
         li {
-            margin-bottom: 8px;
-            position: relative;
-            padding-left: 20px;
+            font-size: 0.875rem;
         }
+    }
+</style>
+```
 
-        li:before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-        }
-
-        li ul {
-            margin-top: 6px;
-        }
-
-        li ul li {
-            padding-left: 30px;
-            margin-bottom: 6px;
-        }
-
-        li ul li:before {
-            content: "◦";
-        }
-
-        a {
-            color: var(--link-color);
-            text-decoration: underline;
-            transition: opacity 0.2s ease;
-        }
-
-        a:hover {
-            opacity: 0.7;
-        }
-
-        em {
-            font-style: italic;
-        }
-
-        @media (max-width: 600px) {
-            body {
-                padding: 30px 20px 15px 20px;
-            }
-
-            h1 {
-                font-size: 1.3rem;
-            }
-
-            .tagline {
-                font-size: 0.95rem;
-            }
-
-            nav {
-                gap: 15px;
-            }
-
-            nav a {
-                font-size: 0.95rem;
-            }
-        }
-    </style>
 </head>
 <body>
     <header>
         <h1>LYCA BALITA</h1>
         <button class="dark-mode-toggle" aria-label="Toggle dark mode">
             <svg class="sun-icon" viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="5"/>
+                <circle cx="12" cy="12" r="4"/>
                 <line x1="12" y1="1" x2="12" y2="3"/>
                 <line x1="12" y1="21" x2="12" y2="23"/>
                 <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
@@ -211,77 +240,80 @@
         </button>
     </header>
 
-    <p class="tagline">Intellectual Property lawyer and strategist focused on Asian, data-driven IP strategy and licensing.</p>
+```
+<p class="tagline">Intellectual Property lawyer and strategist focused on Asian, data-driven IP strategy and licensing.</p>
 
-    <nav>
-        <a href="#about">ABOUT</a>
-        <a href="https://www.linkedin.com/in/lycabalita/" target="_blank" rel="noopener noreferrer">LINKEDIN</a>
-        <a href="https://substack.com/@lycabalita" target="_blank" rel="noopener noreferrer">NEWSLETTER</a>
-    </nav>
+<nav>
+    <a href="#about">About</a>
+    <a href="https://www.linkedin.com/in/lycabalita/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="https://substack.com/@lycabalita" target="_blank" rel="noopener noreferrer">Newsletter</a>
+</nav>
 
-    <section id="about">
-        <h2 class="section-title">About</h2>
-        <ul>
-            <li>Spoken for the World Intellectual Property Organization (WIPO):
-                <ul>
-                    <li>Global Forum on IP in <a href="https://www.ipweek2025.sg/gfip.html" target="_blank" rel="noopener noreferrer">Singapore</a> <em>[Intangible Assets Disclosure]</em></li>
-                    <li>WIPO IP Management Clinic Regional Event in <a href="https://www.wipo.int/en/web/office-singapore/w/news/2023/news_0019#:~:text=News-,Linking%20Hands%20and%20Harnessing%20Knowledge%20with%20WIPO%20—%20Thai%20SMEs%20&%20Startups,from%20the%20program%20in%202024." target="_blank" rel="noopener noreferrer">Thailand</a> <em>[IP Management for SMEs]</em></li>
-                </ul>
-            </li>
-            <li>Other speaking engagements include:
-                <ul>
-                    <li><a href="https://www.facebook.com/share/p/1GFpHkQ8pc/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Law & Governance Forum</a> <em>[Law & Governance in the Digital Space]</em></li>
-                    <li>USAID Opportunity 2.0 Private Sector Summit <em>[Youth entrepreneurship]</em></li>
-                    <li>Philippine LGBT Chamber of Commerce <em>[LGBT Rights in the Philippines]</em></li>
-                </ul>
-            </li>
-            <li>Currently:
-                <ul>
-                    <li>Legal Counsel for <a href="https://jciphilippines.com/chapter/jci-pateros-balut/" target="_blank" rel="noopener noreferrer">JCI Pateros</a></li>
-                    <li>Corporate Secretary for <a href="https://pyea.ph/" target="_blank" rel="noopener noreferrer">PYEA</a></li>
-                    <li>Member of <a href="https://www.lesphilippines.org/" target="_blank" rel="noopener noreferrer">Licensing Executives Society</a> Philippines</li>
-                </ul>
-            </li>
-        </ul>
-    </section>
+<section id="about">
+    <h2 class="section-title">About</h2>
+    <ul>
+        <li>Spoken for the World Intellectual Property Organization (WIPO):
+            <ul>
+                <li>Global Forum on IP in <a href="https://www.ipweek2025.sg/gfip.html" target="_blank" rel="noopener noreferrer">Singapore</a> <em>[Intangible Assets Disclosure]</em></li>
+                <li>WIPO IP Management Clinic Regional Event in <a href="https://www.wipo.int/en/web/office-singapore/w/news/2023/news_0019#:~:text=News-,Linking%20Hands%20and%20Harnessing%20Knowledge%20with%20WIPO%20—%20Thai%20SMEs%20&%20Startups,from%20the%20program%20in%202024." target="_blank" rel="noopener noreferrer">Thailand</a> <em>[IP Management for SMEs]</em></li>
+            </ul>
+        </li>
+        <li>Other speaking engagements include:
+            <ul>
+                <li><a href="https://www.facebook.com/share/p/1GFpHkQ8pc/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">Law & Governance Forum</a> <em>[Law & Governance in the Digital Space]</em></li>
+                <li>USAID Opportunity 2.0 Private Sector Summit <em>[Youth entrepreneurship]</em></li>
+                <li>Philippine LGBT Chamber of Commerce <em>[LGBT Rights in the Philippines]</em></li>
+            </ul>
+        </li>
+        <li>Currently:
+            <ul>
+                <li>Legal Counsel for <a href="https://jciphilippines.com/chapter/jci-pateros-balut/" target="_blank" rel="noopener noreferrer">JCI Pateros</a></li>
+                <li>Corporate Secretary for <a href="https://pyea.ph/" target="_blank" rel="noopener noreferrer">PYEA</a></li>
+                <li>Member of <a href="https://www.lesphilippines.org/" target="_blank" rel="noopener noreferrer">Licensing Executives Society</a> Philippines</li>
+            </ul>
+        </li>
+    </ul>
+</section>
 
-    <section>
-        <h2 class="section-title">Others</h2>
-        <ul>
-            <li>Took the bar exam at 23</li>
-            <li>Co-founder of Annex E-Sports Philippines</li>
-            <li>Previously a PCCI-QC Trustee: Pioneered the PCCI Quezon City Youth Conference (2023 & 2024)</li>
-            <li>Previously a Professor at Panpacific University</li>
-            <li>Previously a Columnist at Business Mirror</li>
-        </ul>
-    </section>
+<section>
+    <h2 class="section-title">Others</h2>
+    <ul>
+        <li>Took the bar exam at 23</li>
+        <li>Co-founder of Annex E-Sports Philippines</li>
+        <li>Previously a PCCI-QC Trustee: Pioneered the PCCI Quezon City Youth Conference (2023 & 2024)</li>
+        <li>Previously a Professor at Panpacific University</li>
+        <li>Previously a Columnist at Business Mirror</li>
+    </ul>
+</section>
 
-    <section>
-        <h2 class="section-title">send me an email (lyca.balita@gmail.com) for:</h2>
-        <ul>
-            <li>1:1 IP Strategy Consultation</li>
-            <li>Trainings on Intellectual Property and Strategy</li>
-            <li>Pro bono workshops on LGBT Rights in the Philippines</li>
-        </ul>
-    </section>
+<section>
+    <h2 class="section-title">send me an email (lyca.balita@gmail.com) for:</h2>
+    <ul>
+        <li>1:1 IP Strategy Consultation</li>
+        <li>Trainings on Intellectual Property and Strategy</li>
+        <li>Pro bono workshops on LGBT Rights in the Philippines</li>
+    </ul>
+</section>
 
-    <script>
-        const toggle = document.querySelector('.dark-mode-toggle');
-        const body = document.body;
+<script>
+    const toggle = document.querySelector('.dark-mode-toggle');
+    const body = document.body;
 
-        // Check for saved theme preference
-        const currentTheme = localStorage.getItem('theme');
-        if (currentTheme === 'dark') {
-            body.classList.add('dark-mode');
-        }
+    // Check for saved theme preference
+    const currentTheme = localStorage.getItem('theme');
+    if (currentTheme === 'dark') {
+        body.classList.add('dark-mode');
+    }
 
-        toggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            
-            // Save theme preference
-            const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
-            localStorage.setItem('theme', theme);
-        });
-    </script>
+    toggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        // Save theme preference
+        const theme = body.classList.contains('dark-mode') ? 'dark' : 'light';
+        localStorage.setItem('theme', theme);
+    });
+</script>
+```
+
 </body>
 </html>
