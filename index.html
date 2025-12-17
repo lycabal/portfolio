@@ -274,7 +274,9 @@
         const body = document.body;
         const h1 = document.querySelector('h1');
         const fullText = 'LYCA BALITA';
-        let hasAnimated = false;
+        let isTyping = false;
+        let isVisible = true;
+        let currentInterval = null;
 
         // Check for saved theme preference
         const currentTheme = localStorage.getItem('theme');
@@ -292,16 +294,27 @@
 
         // Typing animation
         function typeText() {
+            if (isTyping) return; // Prevent multiple animations
+            
+            isTyping = true;
             h1.textContent = '';
+            h1.classList.remove('typing');
             let index = 0;
             
-            const typeInterval = setInterval(() => {
+            // Clear any existing interval
+            if (currentInterval) {
+                clearInterval(currentInterval);
+            }
+            
+            currentInterval = setInterval(() => {
                 if (index < fullText.length) {
                     h1.textContent += fullText[index];
                     index++;
                 } else {
-                    clearInterval(typeInterval);
+                    clearInterval(currentInterval);
+                    currentInterval = null;
                     h1.classList.add('typing');
+                    isTyping = false;
                 }
             }, 80);
         }
@@ -309,18 +322,18 @@
         // Intersection Observer for scroll detection
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    if (!hasAnimated) {
-                        typeText();
-                        hasAnimated = true;
-                    }
-                } else {
-                    hasAnimated = false;
+                if (entry.isIntersecting && !isVisible) {
+                    // Element just came back into view
+                    isVisible = true;
+                    typeText();
+                } else if (!entry.isIntersecting && isVisible) {
+                    // Element just left view
+                    isVisible = false;
                     h1.classList.remove('typing');
                 }
             });
         }, {
-            threshold: 0.1
+            threshold: 0.5
         });
 
         // Start observing the header
